@@ -1,0 +1,49 @@
+{% extends 'base_sidebar.html' %}
+{% load static %}
+{% block title %}追加{% endblock %}
+
+
+{% block content %}
+<div style="height: 12px;"></div>
+<div class="wrap centered-box">
+    <h1>新規タスク作成</h1>
+
+    <a href="{% url 'tasks:add_task' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/add.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>タスク追加</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+    <a href="{% url 'tasks:add_subtask' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/add.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>サブタスク追加</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+    <h2>新規チーム作成</h2>
+    <a href="{% url 'teams:team_create' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/add.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>新規チーム作成</p>
+        </div>
+    </a>
+    
+    <div style="height: 40px;"></div>
+</div>
+
+<div style="height: 48px;"></div>
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

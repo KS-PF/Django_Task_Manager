@@ -1,0 +1,143 @@
+{% extends 'base_sidebar.html' %}
+{% load static %}
+{% block title %}ガンチャート{% endblock %}
+
+
+{% block error %}
+{% if error != '' %}
+<div style="height: 12px;"></div>
+<div class="error">{{ error }}</div>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div style="height: 28px;"></div>
+
+<div class="chart-wrap">
+    <h1>タスク（ガンチャート）</h1>
+    <p>{{ date_range }}</p>
+    <div class="gantt-chart">
+        <table>
+            <thead>
+                <tr>
+                    <th>タスク一覧</th>
+                    {% for day, weekday in date_range_list %}
+                    <td>{{ day }} <br> ({{ weekday }})</td>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for task_data, task_flags in gantt_chart_tasks.items %}
+                <tr>
+                    <th>
+                        <a href="{% url 'tasks:task_update' task_data.0 %}">
+                            {{ task_data.1 }}
+                        </a>
+                    </th>
+                    {% for flag in task_flags %}
+                        <td>
+                            {% if flag == 1 %}
+                            <a href="{% url 'tasks:task_update' task_data.0 %}">
+                                <div class="gantt-chart-blue"></div>
+                            </a>
+                            {% elif flag == 2 %}
+                            <a href="{% url 'tasks:task_update' task_data.0 %}">
+                                <div class="gantt-chart-blue"><span>★</span></div>
+                            </a>
+                            {% endif%}
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="height: 48px;"></div>
+
+    <h2>サブタスク（ガンチャート）</h2>
+    <p>{{ date_range }}</p>
+    <div class="gantt-chart">
+        <table>
+            <thead>
+                <tr>
+                    <th>サブタスク一覧</th>
+                    {% for day, weekday in date_range_list %}
+                    <td>{{ day }} <br> ({{ weekday }})</td>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for subtask_data, subtask_flags in gantt_chart_subtasks.items %}
+                <tr>
+                    <th>
+                        <a href="{% url 'tasks:subtask_update' subtask_data.0 %}">
+                            {{ subtask_data.1 }}
+                        </a>
+                    </th>
+                    {% for flag in subtask_flags %}
+                        <td>
+                            {% if flag == 1 %}
+                            <a href="{% url 'tasks:subtask_update' subtask_data.0 %}">
+                                <div class="gantt-chart-blue"></div>
+                            </a>
+                            {% elif flag == 2 %}
+                            <a href="{% url 'tasks:subtask_update' subtask_data.0 %}">
+                                <div class="gantt-chart-blue"><span>★</span></div>
+                            </a>
+                            {% endif%}
+                        </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div style="height: 48px;"></div>
+
+
+<div class="chart-wrap">    
+    <h1>タスク進捗度</h1>
+    <div class="barchart">
+        <table>
+            <tbody>
+                {% for p, data in barchart.items %}
+                <tr>
+                    <td class="barchart-td-t">{{ p }}</td>
+                    {% for i in data %}
+                        {% if i == 1 %}
+                        <td><div class="barchart-blue"></div></td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="barchart-td-t">(%)</td>
+                    {% for i in barchart_bottom %}
+                        <th>
+                            <a href="{% url 'tasks:subtask_update' i.0 %}">
+                                {{ i.1 }}
+                            </a>
+                        </th>
+                    {% endfor %}
+                </tr>
+            </tfoot>
+        </table> 
+    </div>
+</div>
+
+
+<div style="height: 48px;"></div>
+
+
+<div style="height: 48px;"></div>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

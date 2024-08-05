@@ -1,0 +1,6 @@
+db.sqlite3
+settings.py
+.DS_Store
+
+__pycache__
+migrations

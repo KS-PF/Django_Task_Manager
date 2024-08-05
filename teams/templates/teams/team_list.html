@@ -1,0 +1,122 @@
+{% extends 'base_sidebar.html' %}
+{% load static %}
+{% block title %}{{ user.last_name }} {{ user.first_name }}{% endblock %}
+
+{% block content %}
+<div style="height: 36px;"></div>
+
+<div class="list-table">
+    <h2>所属チーム</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>概要</th>
+                <th>メンバー</th>
+                <th>管理者</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="max-height">
+                <td colspan="4">　</td>
+            </tr>
+            {% for teams_with_member in teams_with_members %}
+            <tr class="max-height">
+                <td>{{ teams_with_member.team.team_id }}</td>
+                <td>{{ teams_with_member.team.name }}</td>
+                <td>{{ teams_with_member.team.description }}</td>
+                <td class="members">
+                    <p class="p-small">
+                        {% for member in teams_with_member.members %}
+                        {{ member.last_name }}{{ member.first_name }}
+                        {% empty %}
+                        該当なし
+                        {% endfor %}
+                    </p>
+                </td>
+                <td>{{ teams_with_member.team.creator.last_name }}{{ teams_with_member.team.creator.first_name }}</td>
+            </tr>
+
+            <tr class="max-height">
+                <td colspan="4">　</td>
+            </tr>
+            {% empty %}
+            <li>該当なし</li>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+<div style="height: 48px;"></div>
+
+<div class="list-table">
+    <h2>作成したチーム</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>概要</th>
+                <th>メンバー</th>
+                <th>編集</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="max-height">
+                <td colspan="4">　</td>
+            </tr>
+            {% for created_team in created_teams_with_members %}
+            <tr class="max-height">
+                <td>{{ created_team.team.team_id }}</td>
+                <td>{{ created_team.team.name }}</td>
+                <td>{{ created_team.team.description }}</td>
+                <td class="members">
+                    <p class="p-small">
+                        {% for member in created_team.members %}
+                        {{ member.last_name }}{{ member.first_name }}
+                        {% empty %}
+                        該当なし
+                        {% endfor %}
+                    </p>
+                </td>
+                <td>
+                    <a href="{% url 'teams:team_edit' created_team.team.pk %}">
+                        <button class="list-table-button" type="submit">編集する</button>
+                    </a>
+                </td>
+            </tr>
+
+            <tr class="max-height">
+                <td colspan="4">　</td>
+            </tr>
+            {% empty %}
+            <li>該当なし</li>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+<div style="height: 48px;"></div>
+
+<div class="wrap centered-box">
+    <h2>新規チーム作成</h2>
+    <a href="{% url 'teams:team_create' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/add.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>新規チーム作成</p>
+        </div>
+    </a>
+    
+    <div style="height: 40px;"></div>
+</div>
+
+<div style="height: 48px;"></div>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

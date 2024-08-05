@@ -1,0 +1,955 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+    font-family: serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(84, 84, 84);
+    background-color: rgb(84, 84, 84);
+}
+
+body {
+    line-height: 1.7;
+    color: rgb(84, 84, 84);
+    margin: 0;
+    padding: 0;
+    min-width: 1000px;
+    min-height: 1000px;
+}
+
+.color-grey {
+    color: rgb(84, 84, 84);
+}
+
+.color-blue {
+    color: rgb(84, 84, 84);
+}
+
+label {
+    font-size: 24px;
+}
+
+p {
+    padding: 0 4%;
+    margin: 4px 0;
+    font-size: 20px;
+}
+
+.p-red {
+    color: rgb(255, 80, 80);
+    font-size: 14px;
+}
+
+.p-blue {
+    color: rgb(84, 84, 84);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.p-small {
+    font-size: 14px;
+}
+
+.p-post {
+    font-size: 24px;
+}
+
+.p-nowrap {
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.p-heading {
+    font-size: 24px;
+}
+
+.main-iconbar-flex {
+    display: flex;
+    background-color: rgb(84, 84, 84);
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    min-height: 100vh;
+    overflow: hidden;
+    color: rgb(84, 84, 84);
+    width: 100%;
+}
+
+.main-iconbar-flex-main-content-l {
+    background-color: rgb(84, 84, 84);
+    width: 65px;
+    height: 100vh;
+    border-right: 1px solid white;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    z-index: 3;
+}
+
+.iconbar-icons-div {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.iconbar-icons-div:hover {
+    background-color: rgb(151, 151, 151);
+    border-radius: 8px;
+}
+
+/* .iconbar-icons-div-b{
+    background-color: black;
+} */
+.iconbar-icons-label {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconbar-icons-label:hover {
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: rgb(84, 84, 84);
+    color: white;
+}
+
+.iconbar-icons {
+    width: 45px;
+    margin: auto;
+}
+
+.main-iconbar-flex-main-content-r {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    font-size: 24px;
+    height: fit-content;
+    font-weight: bold;
+    background-color: white;
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid rgb(196, 196, 196);
+}
+
+.header-l {
+    width: 75%;
+    text-align: center;
+    background-color: white;
+}
+
+.header-r {
+    width: 10%;
+    background-color: white;
+    display: flex;
+    justify-content: end;
+}
+
+header img {
+    width: 60px;
+    background-color: white;
+}
+
+header input {
+    width: 60px;
+    background-color: white;
+}
+
+
+footer {
+    text-align: center;
+    color: white;
+    background-color: rgb(84, 84, 84);
+    overflow: hidden;
+    padding: 2%;
+    height: fit-content;
+    margin: 0;
+    font-size: 24px;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+footer div img {
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}
+
+.wrap {
+    margin: 0;
+    padding: 0;
+}
+
+.chart-wrap {
+    width: 96%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: auto;
+}
+
+
+a {
+    text-decoration: none;
+    color: rgb(84, 84, 84);
+}
+
+h1,
+h2,
+h3 {
+    font-family: serif;
+    color: rgb(84, 84, 84);
+    margin: 24px 0;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 26px;
+}
+
+a {
+    color: rgb(84, 84, 84);
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid rgb(133, 133, 133);
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(84, 84, 84);
+    padding: 1%;
+    overflow: auto;
+    white-space: nowrap;
+    color: white;
+    font-size: 24px;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    background-color: white;
+    color: rgb(84, 84, 84);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+
+
+.centered-box {
+    width: 50%;
+    height: fit-content;
+    padding: 4px;
+    margin-bottom: 40px;
+    text-align: center;
+    height: fit-content;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+.text-start {
+    text-align: start;
+}
+
+.text-start a {
+    text-align: start;
+    text-decoration: underline;
+    color: rgb(107, 107, 107);
+}
+
+.text-start a:hover {
+    color: rgb(81, 81, 81);
+    font-weight: bold;
+}
+
+.ul-center {
+    width: fit-content;
+    margin: auto;
+    color: rgb(107, 107, 107);
+}
+
+.ul-center a {
+    color: rgb(107, 107, 107);
+}
+
+button {
+    text-align: center;
+    color: white;
+    background-color: rgb(84, 84, 84);
+    font-size: 24px;
+    width: 60%;
+    padding: 8px;
+    border: 2px solid rgb(84, 84, 84);
+    border-radius: 8px;
+    display: block;
+    margin: 16px auto;
+}
+
+button:hover {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    border: 2px solid rgb(53, 53, 53);
+}
+
+.button-red {
+    text-align: center;
+    color: white;
+    background-color: rgb(255, 80, 80);
+    padding: 2%;
+    border: 2px solid rgb(255, 80, 80);
+    border-radius: 8px;
+    width: fit-content;
+    /* display: block; */
+    font-size: 22px;
+}
+
+.button-red:hover {
+    color: white;
+    background-color: rgb(164, 40, 40);
+    border: 2px solid rgb(164, 40, 40);
+}
+
+
+.error {
+    margin: 1em 0;
+    padding: 1em 2em;
+    background: rgb(255, 234, 234);
+    border: 2px double rgb(255, 80, 80);
+    border-radius: 4px;
+    text-align: center;
+    color: rgb(255, 80, 80);
+    font-weight: bold;
+    width: fit-content;
+    font-size: 18px;
+    margin: auto;
+    height: fit-content;
+}
+
+ul.errorlist {
+    margin: 0 auto;
+    width: 90%;
+    padding: 0;
+}
+
+.errorlist li {
+    text-align: left;
+    color: rgb(255, 80, 80);
+    font-size: 16px;
+    list-style: none;
+}
+
+
+#id_members{
+    width: fit-content;
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    box-sizing: border-box;
+    margin-bottom: 28px;
+    margin: 0 auto;
+    height:  100px;
+    overflow: scroll;
+}
+
+textarea {
+    width: 96%;
+    height: 250px;
+    resize: none;
+    padding: 4px;
+    font-family: serif;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(84, 84, 84);
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    margin-bottom: 8px 0;
+}
+
+textarea:focus {
+    border: 2px solid rgb(84, 84, 84);
+    outline: 0;
+}
+
+input[type=submit] {
+    min-width: min-content;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(84, 84, 84);
+    border: 2px solid rgb(84, 84, 84);
+    border-radius: 8px;
+    padding: 1%;
+}
+
+input[type=submit]:hover {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    border: 2px solid rgb(53, 53, 53);
+}
+
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    box-sizing: border-box;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+input[type="datetime-local"],
+input[type="time"] {
+    width: fit-content;
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    box-sizing: border-box;
+    margin-bottom: 28px;
+}
+
+input[type="email"]:focus,
+input[type="datetime-local"]:focus,
+input[type="time"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border: 2px solid rgb(84, 84, 84);
+    outline: 0;
+}
+
+input[type="image"] {
+    height: 48px;
+    width: 48px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+select {
+    padding: 10px 15px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    margin-bottom: 2px;
+    margin-top: 2px;
+    width: max-content;
+    width: 100%;
+}
+
+select:hover {
+    border: 2px solid rgb(84, 84, 84);
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: white;
+    font-size: 20px;
+    min-width: 480px;
+    overflow: auto;
+    border-radius: 2px;
+}
+
+thead {
+    padding: 10px;
+    border: solid 1px rgb(104, 104, 104);
+    background-color: rgb(84, 84, 84);
+    color: white;
+}
+
+th {
+    padding: 8px;
+    border: solid 1px rgb(104, 104, 104);
+}
+
+.b-exit {
+    text-align: center;
+    color: white;
+    background-color: rgb(255, 80, 80);
+    padding: 2%;
+    border: 2px solid rgb(255, 80, 80);
+    border-radius: 8px;
+    width: fit-content;
+    display: block;
+    /* margin: 16px auto; */
+    font-size: 22px;
+}
+
+.b-exit:hover {
+    background-color: rgb(164, 40, 40);
+    border: 2px solid rgb(164, 40, 40);
+    color: white;
+}
+
+
+.input-radio {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    background-color: white;
+    padding: 4px;
+    border-radius: 8px;
+    border: 2px solid rgb(209, 209, 209);
+    overflow: auto;
+    white-space: nowrap;
+    margin: 0 auto;
+    height: fit-content;
+    margin-bottom: 16px;
+}
+
+.manage-index {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 85%;
+    margin: 4px auto;
+    height: 60px;
+    background-color: rgb(81, 81, 81);
+    border-radius: 8px;
+}
+
+.manage-index img {
+    width: 50px;
+}
+
+.manage-index p {
+    font-size: 24px;
+    color: white;
+}
+
+.manage-index:hover {
+    background-color: rgb(156, 156, 156);
+    font-weight: bold;
+
+}
+
+/* ハンバーガーメニューアセット
+ーーーーーーーーーーーーーーー */
+.hamburger-button {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    left: 10px;
+    top: 10px;
+    z-index: 4;
+}
+
+.hamburger-line {
+    position: absolute;
+    width: 40px;
+    margin: 0px 2px;
+    height: 4px;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.8s;
+}
+
+.hamburger-line-t {
+    top: 1px;
+}
+
+.hamburger-line-m {
+    top: 16px;
+}
+
+.hamburger-line-b {
+    top: 32px;
+}
+
+.hamburger-content {
+    position: fixed;
+    left: -235px;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.8s;
+    overflow: auto;
+    text-align: center;
+    padding: 0;
+    z-index: 2;
+}
+
+.hamburger-out {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+
+    z-index: 1;
+}
+
+/*クリックされたら*/
+.active .hamburger-line-t {
+    opacity: 0;
+}
+
+.active .hamburger-line-b {
+    opacity: 0;
+}
+
+.active .hamburger-content {
+    left: 65px;
+}
+
+.active .hamburger-out {
+    opacity: 0.8;
+    visibility: visible;
+}
+
+/* ハンバーガーメニューアセット終わり
+ーーーーーーーーーーーーーーー */
+
+
+
+/* ガンチャートアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+.gantt-chart {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: fit-content;
+    max-height: 1000px;
+    overflow: scroll;
+}
+
+.gantt-chart table {
+    border-collapse: collapse;
+    border: 2px solid rgb(84, 84, 84);
+    font-family: serif;
+    font-size: 16px;
+}
+
+.gantt-chart thead {
+    border: 1px solid white;
+    background-color: rgb(84, 84, 84);
+    height: 40px;
+    color: white;
+}
+
+.gantt-chart tr {
+    border: 1px solid rgb(84, 84, 84);
+}
+
+.gantt-chart th {
+    border: 1px solid white;
+    padding: 4px 0;
+    width: 180px !important;
+    min-width: 180px !important;
+    height: 40px;
+    overflow: auto;
+    text-align: center;
+    background-color: rgb(84, 84, 84);
+    color: white;
+}
+.gantt-chart th a{
+    color: white;
+}
+.gantt-chart th a:hover{
+    color: rgb(84, 84, 84);
+}
+
+.gantt-chart th:hover {
+    border: 1px solid rgb(84, 84, 84);
+    background-color: rgb(233, 233, 233);
+    color: rgb(84, 84, 84);
+}
+
+.gantt-chart td {
+    padding: 4px 0;
+    width: 40px !important;
+    min-width: 40px !important;
+    height: fit-content;
+    min-height: 40px;
+    text-align: center;
+}
+
+.gantt-chart-blue{
+    width: 100%;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(23, 23, 23);
+}
+
+.gantt-chart-blue {
+    background-color: rgb(72, 179, 233);
+    border-left: solid 2px rgb(72, 179, 233);
+}
+
+/* ガンチャートアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+
+
+/* タスクアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+.tasks-table {
+    margin: 0;
+    padding: 0;
+    width: 95%;
+    height: fit-content;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+.tasks-table table {
+    border-collapse: collapse;
+    border: 2px solid rgb(84, 84, 84);
+    font-family: serif;
+    font-size: 16px;
+}
+
+.tasks-table tr {
+    border: 1px solid rgb(84, 84, 84);
+    background-color: white;
+}
+
+.tasks-table th {
+    padding: 4px 0;
+    overflow: auto;
+    text-align: center;
+    border: 1px solid rgb(84, 84, 84);
+    background-color: white;
+    min-width: 280px;
+}
+.tasks-table .tasks-box {
+    width: 95%;
+    margin: 8px auto;
+    height: fit-content;
+    padding: 4px;
+    border-radius: 4px;
+    max-width: 350px;
+}
+.tasks-table .yet{
+    background-color: rgb(255, 172, 172);
+}
+.tasks-table .pro{
+    background-color: rgb(172, 255, 196);
+}
+.tasks-table .fin{
+    background-color: rgb(172, 208, 255);
+}
+.tasks-table .yet:hover{
+    background-color: rgb(203, 136, 136);
+}
+.tasks-table .pro:hover{
+    background-color: rgb(142, 211, 161);
+}
+.tasks-table .fin:hover{
+    background-color: rgb(137, 165, 201);
+}
+/* タスクアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+
+
+
+/* リストアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+.list-table{
+    margin: 0;
+    padding: 0;
+    width: 85%;
+    height: fit-content;
+    overflow: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.list-table table {
+    border-collapse: collapse;
+    border: 2px solid rgb(84, 84, 84);
+    font-family: serif;
+    font-size: 20px;
+}
+
+.list-table table thead{
+    background-color: rgb(212, 212, 212);
+    color: rgb(84, 84, 84);
+    font-size: 16px;
+}
+
+.list-table .max-height{
+    vertical-align: top;
+    height: fit-content;
+    max-height: 40px;
+    overflow: auto;
+}
+
+.list-table .list-table-button-td{
+    width: fit-content;
+}
+
+.list-table .list-table-button{
+    padding: 4px;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    font-size: 16px;
+    width: 80%;
+}
+
+.list-table .list-table-button-red{
+    padding: 4px;
+    margin: 0 auto;
+    width: 80%;
+    height: fit-content;
+    background-color: rgb(129, 0, 0);
+    border: 2px solid rgb(129, 0, 0);
+    font-size: 16px;
+}
+
+.list-table  .members{
+    max-width: 120px;
+}
+
+
+/* リストアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーーーー */
+
+/* 棒グラフアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーー */
+.barchart {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: fit-content;
+    width: fit-content;
+    overflow: scroll;
+}
+
+.barchart table {
+    border-collapse: collapse;
+    border: 2px solid rgb(84, 84, 84);
+    font-family: serif;
+    font-size: 16px;
+}
+
+.barchart tfoot {
+    border: 1px solid white;
+    background-color: rgb(84, 84, 84);
+    height: fit-content;
+    color: white;
+}
+
+.barchart th {
+    border: 1px solid white;
+    padding: 4px 0;
+    min-width: 140px !important;
+    width: 140px !important;
+    max-width: 140px !important;
+    min-height: 40px;
+    height: 40px !important;
+    max-height: 80px !important;
+    overflow: auto;
+    text-align: center;
+    background-color: rgb(84, 84, 84);
+    color: white;
+}
+
+.barchart th:hover {
+    border: 1px solid rgb(84, 84, 84);
+    background-color: rgb(233, 233, 233);
+    color: rgb(84, 84, 84);
+}
+.barchart th a{
+    color: white;
+}
+.barchart th a:hover{
+    color: rgb(84, 84, 84);
+}
+
+.barchart td {
+    padding: 0;
+    width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    text-align: center;
+}
+
+.barchart-td-t {
+    border: 1px solid white;
+    background-color: rgb(84, 84, 84);
+    height: 40px;
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    color: white;
+}
+
+.barchart-blue {
+    width: 48px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.barchart-blue {
+    background-color: rgb(72, 179, 233);
+    border-top: solid 2px rgb(72, 179, 233);
+    border-bottom: solid 2px rgb(72, 179, 233);
+}
+
+/* 棒グラフアセット */
+/* ーーーーーーーーーーーーーーーーーーーーーー */
+
+
+
+
+@media (max-width:1000px) {
+    body {
+        overflow: scroll;
+    }
+}

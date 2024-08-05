@@ -1,0 +1,169 @@
+{% extends 'base_sidebar.html' %}
+{% load static %}
+{% block title %}{{ user.last_name }} {{ user.first_name }}{% endblock %}
+
+
+{% block content %}
+<div style="height: 12px;"></div>
+
+<div class="wrap centered-box">
+
+    <h1>期日の近いタスク</h1>
+
+    <table>
+        <tr>
+            <th class="text-start">
+                <ul>
+                    {% if tasks is None %}
+                    <p>なし</p>
+                    {% else %}
+                        {% for task in tasks %}
+                        <li>
+                            <a href="{% url 'tasks:task_update' task.pk %}">
+                                <label>
+                                {{ task.name }}| 期日：
+                                {{ task.end_date.year }}年
+                                {{ task.end_date.month }}月
+                                {{ task.end_date.day }}日
+                                </label>
+                            </a>
+                        </li>
+                        <div style="height:16px"></div>
+                        {% endfor %}
+                        <p>   ........</p>
+                    {% endif %}
+                </ul>
+            </th>
+        </tr>
+    </table>
+
+    <div style="height: 48px;"></div>
+
+    <h1>期日の近いサブタスク</h1>
+
+    <table>
+        <tr>
+            <th class="text-start">
+                <ul>
+                    {% if subtasks is None %}
+                    <p>なし</p>
+                    {% else %}
+                        {% for subtask in subtasks %}
+                        <li>
+                            <a href="{% url 'tasks:subtask_update' subtask.pk %}">
+                                <label>
+                                {{ subtask.name }}| 期日：
+                                {{ subtask.end_date.year }}年
+                                {{ subtask.end_date.month }}月
+                                {{ subtask.end_date.day }}日
+                                </label>
+                            </a>
+                        </li>
+                        <div style="height:16px"></div>
+                        
+                        {% endfor %}
+                        <p>   ........</p>
+                    {% endif %}
+                </ul>
+            </th>
+        </tr>
+    </table>
+
+    <div style="height: 48px;"></div>
+
+
+
+    <h1>所属チーム</h1>
+    <table>
+        <tr>
+            <th class="text-start">
+                <ul>
+                    {% if member_teams is None %}
+                    <p>なし</p>
+                    {% else %}
+                        {% for team in member_teams %}
+                        <li>
+                            <label>
+                                名前：
+                                {{ team.name }}| 責任者：
+                                {{ team.creator.last_name }}{{ team.creator.first_name }}
+                            </label>
+                        </li>
+                        <div style="height:16px"></div>
+                        
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </th>
+        </tr>
+    </table>
+
+    <div style="height: 48px;"></div>
+
+
+    <h1>機能一覧</h1>
+
+    <a href="{% url 'tasks:charts' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/barchart.png' %}" alt="チャート管理">
+            <div style="width: 20px;"></div>
+            <p>チャート管理</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+    <a href="{% url 'tasks:whiteboard' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/whiteboard.png' %}" alt="サブタスク">
+            <div style="width: 20px;"></div>
+            <p>ホワイトボード管理</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+
+
+    <a href="{% url 'tasks:add' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/add.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>タスク・チーム追加</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+    <a href="{% url 'teams:team_list' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/team.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>チーム管理</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+
+    <a href="{% url 'accounts:mypage' %}">
+        <div class="manage-index">
+            <div style="width: 20px;"></div>
+            <img src="{% static 'img/user.png' %}" alt="">
+            <div style="width: 20px;"></div>
+            <p>ユーザー画面</p>
+        </div>
+    </a>
+
+    <div style="height: 40px;"></div>
+
+</div>
+
+<div style="height: 48px;"></div>
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

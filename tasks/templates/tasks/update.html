@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}FORM{% endblock %}
+
+
+{% block content %}
+
+<div style="height: 32px;"></div>
+<div class="text-start">
+    <p><a href='JavaScript:history.back()'>←戻る</a></p>
+</div>
+
+<div class="wrap centered-box">
+    <div style="height: 32px;"></div>
+
+
+    <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="height: 32px;"></div>
+        <button type="submit" onclick="return confirm('更新しますか？')">更新する</button>
+    </form>
+
+    <div style="height: 48px;"></div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}FORM{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block error %}
+{% if error != '' %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if back != '' %}
+<div style="height: 32px;"></div>
+<div class="text-start">
+    <p><a href='JavaScript:history.back()'>←戻る</a></p>
+</div>
+{% endif %}
+
+<div class="wrap centered-box">
+    <div style="height: 32px;"></div>
+
+    <h1>{{ title }}</h1>
+
+    <form action="{% url urlName %}" method="post">
+        {% csrf_token %}
+        {{ forms.as_p }}
+        <div style="height: 32px;"></div>
+        <button type="submit">{{ label }}</button>
+    </form>
+
+    <div style="height: 48px;"></div>
+
+</div>
+
+{% endblock %}

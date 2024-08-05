@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}使い方{% endblock %}
+
+
+{% block error %}
+{% if error is not None %}
+<div class="error">{{ error }}</div>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div style="height: 20px;"></div>
+<div class="text-start">
+    <p><a href="{% url 'tasks:index' %}">←Home</a></p>
+</div>
+
+<div class="wrap centered-box">
+    <h1>使い方</h1>
+</div>
+
+
+<div style="height: 48px;"></div>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

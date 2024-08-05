@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="{% static 'img/icon.png' %}" sizes="any">
+    <link rel="apple-touch-icon" href="{% static 'img/icon.png' %}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brainstor Meeting Web Application">
+
+    <title>{% block title %}{% endblock %} -X株式会社 - プロジェクト管理</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>    
+    <div id="hamburger" class="">
+        <a class="hamburger-button" onmouseover="HamburgerIn();">
+            <span class="hamburger-line hamburger-line-t"></span>
+            <span class="hamburger-line hamburger-line-m"></span>
+            <span class="hamburger-line hamburger-line-b"></span>
+        </a>
+        <div class="hamburger-content">
+            <div style="height: 85px;"></div>
+    
+            <a href="{% url 'tasks:index' %}">
+                <div  class="iconbar-icons-label">
+                    <p>ホーム</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+            <a href="{% url 'tasks:charts' %}">
+                <div  class="iconbar-icons-label">
+                    <p>チャート管理</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+    
+            <a href="{% url 'tasks:whiteboard' %}">
+                <div  class="iconbar-icons-label">
+                    <p>ホワイトボード</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+            
+    
+            <a href="{% url 'tasks:add' %}">
+                <div  class="iconbar-icons-label">
+                    <p>追加</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+            <a href="{% url 'teams:team_list' %}">
+                <div  class="iconbar-icons-label">
+                    <p>チーム管理</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+    
+            <a href="{% url 'accounts:mypage' %}">
+                <div  class="iconbar-icons-label">
+                    <p>ユーザー管理</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+    
+    
+        </div>
+        <a class="hamburger-out" onclick="HamburgerOut();"></a>
+    </div>
+
+    <div class="main-iconbar-flex">
+
+        <div  class="main-iconbar-flex-main-content-l">
+            <div style="height: 85px;"></div>
+        
+            <a href="{% url 'tasks:index' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/home.png' %}" alt="ホーム" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+        
+            <a href="{% url 'tasks:charts' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/barchart.png' %}" alt="チャート管理" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+        
+            <a href="{% url 'tasks:whiteboard' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/whiteboard.png' %}" alt="ホワイトボード" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+        
+        
+            <a href="{% url 'tasks:add' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/add.png' %}" alt="add" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+
+            <a href="{% url 'teams:team_list' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/team.png' %}" alt="チーム" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+        
+            <a href="{% url 'accounts:mypage' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/user.png' %}" alt="ユーザー" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+
+
+        
+        
+        
+        </div>
+        
+        <div style="width: 65px;"></div>
+
+        <div class="main-iconbar-flex-main-content-r">
+
+            <header>
+                <div style="width: 48px;"></div>
+            
+                <label class="header-l">こんにちは、{{ user.last_name }} {{ user.first_name }} さん</label>
+            
+                <form action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <input type="image"  onclick="return confirm('ログアウトしますか？')"
+                    id="image" alt="logout" src="{% static 'img/logout.png' %}" 
+                    class="logout-img">
+                </form>
+            
+            </header>
+
+            <main>
+                {% block error %}{% endblock %}
+                {% block content %}
+                <p>※コンテンツがありません。</p>
+                {% endblock %}
+            </main>
+
+            <footer>
+                <div>
+                    <p class="p-heading">X株式会社 プロジェクト管理</p>
+                </div>
+                <div>
+                    <nav>
+                        <p>
+                            <a href="{% url 'tasks:how_use' %}">使い方</a>
+                        </p>
+                        <p>|</p>
+                        <p><a href="{% url 'accounts:mypage' %}">ユーザー画面</a></p>
+                    </nav>
+                </div>
+                <div>
+                    <img src="{% static 'img/icon.png' %}" alt="現在の管理者">
+                </div>
+                <div style="height: 12px;"></div>
+                <p>Made in CPP1 | 2023~2024</p>
+                <p>All rights reserved</p>
+                <div style="height: 32px;"></div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

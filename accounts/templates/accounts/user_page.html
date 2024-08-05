@@ -1,0 +1,47 @@
+{% extends 'base_sidebar.html' %}
+{% load static %}
+
+{% block title %}{{ user.last_name }} {{ user.first_name }} - User Page{% endblock %}
+
+
+
+{% block content %}
+
+<div class="wrap centered-box">
+    <h1>アカウント管理</h1>
+
+    <div style="height:32px;"></div>
+    <table>
+        <tr>
+            <th colspan="2"><label>アカウント情報</label></th>
+        </tr>
+
+        <tr>
+            <th>社員ID</th>
+            <th>{{ user.username }}</th>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <th>{{ user.email }}</th>
+        </tr>
+
+        <tr>
+            <th>ユーザー名</th>
+            <th>{{ user.last_name }} {{ user.first_name }}</th>
+        </tr>
+
+        <tr>
+            <th>部門</th>
+            <th>{{ user.division }}</th>
+        </tr>
+
+        <tr>
+            <th>パスワード</th>
+            <th>*非表示</th>
+        </tr>
+    </table>
+
+</div>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
