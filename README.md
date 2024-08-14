@@ -1,9 +1,11 @@
 # Django_Task_Manager
 
-##　概要
+
+## 概要
 
 Djangoを使用したタスク管理システムです。
 PythonAnywhereにデプロイしました。
+
 
 ## 作成した機能
 - タスク・サブタスク管理(追加・編集)
