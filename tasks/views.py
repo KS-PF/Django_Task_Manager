@@ -17,7 +17,7 @@ import re
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.http import HttpResponseForbidden
 
 
 
@@ -346,20 +346,77 @@ class WhiteBoardView(LoginRequiredMixin, TemplateView):
 """
 アップデート
 """
-class TasksUpdate(LoginRequiredMixin, UpdateView):
-    template_name='tasks/update.html'
-    model = TasksModel
-    form_class = TaskUpdataForm
-    success_url = reverse_lazy('tasks:whiteboard')
+class TasksUpdate(LoginRequiredMixin, TemplateView):
+    template_name = 'tasks/update.html'
+    
+    def get(self, request, *args, **kwargs):
+        task = get_object_or_404(TasksModel, pk=kwargs['pk'])
+        form = TaskUpdataForm(instance=task)
+        delete_url = reverse('tasks:delete_task', kwargs={'id': task.task_id})
+        return self.render_to_response({'form': form, 'task': task, 'delete_url': delete_url,})
+    
+    def post(self, request, *args, **kwargs):
+        task = get_object_or_404(TasksModel, pk=kwargs['pk'])
+        form = TaskUpdataForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('tasks:whiteboard'))
+        return self.render_to_response({'form': form, 'task': task})
+    
 
-class SubTasksUpdate(LoginRequiredMixin, UpdateView):
-    template_name='tasks/update.html'
-    model = SubTasksModel
-    form_class = SubTaskUpdataForm
-    success_url = reverse_lazy('tasks:whiteboard')
+class SubTasksUpdate(LoginRequiredMixin, TemplateView):
+    template_name = 'tasks/update.html'
+    
+    def get(self, request, *args, **kwargs):
+        subtask = get_object_or_404(SubTasksModel, pk=kwargs['pk'])
+        form = SubTaskUpdataForm(instance=subtask)
+        delete_url = reverse('tasks:delete_subtask', kwargs={'id': subtask.id})
+        return self.render_to_response({'form': form, 'subtask': subtask, 'delete_url': delete_url,})
+    
+    def post(self, request, *args, **kwargs):
+        subtask = get_object_or_404(SubTasksModel, pk=kwargs['pk'])
+        form = SubTaskUpdataForm(request.POST, instance=subtask)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy('tasks:whiteboard'))
+        return self.render_to_response({'form': form, 'subtask': subtask})
 
 """
 アップデート
+(＊＊終わり＊＊)
+"""
+
+
+"""
+データ削除
+"""
+@login_required
+def delete_task(request, id):
+    task = get_object_or_404(TasksModel, task_id=id)
+
+    if task.created_by == request.user:
+        task.delete() 
+        
+        url = reverse('tasks:message', kwargs={'type': 'delete_task'})
+        return redirect(url)
+    else:
+        return HttpResponseForbidden("あなたはこのタスクを削除する権限がありません。")
+    
+
+@login_required
+def delete_subtask(request, id):
+    subtask = get_object_or_404(SubTasksModel, id=id)
+
+    if subtask.created_by == request.user:
+        subtask.delete()
+        
+        url = reverse('tasks:message', kwargs={'type': 'delete_subtask'})
+        return redirect(url)
+    else:
+        return HttpResponseForbidden("あなたはこのサブタスクを削除する権限がありません。")
+
+"""
+データ削除
 (＊＊終わり＊＊)
 """
 
@@ -403,6 +460,16 @@ def message(request, type):
     elif type == 'permission_error':
         title = '編集権限がありません'
         text = 'もう一度やり直してください'
+        label = 'ホームに戻る'
+        name = 'tasks:index'
+    elif type == 'delete_task':
+        title = '削除完了'
+        text = 'タスクを削除しました'
+        label = 'ホームに戻る'
+        name = 'tasks:index'
+    elif type == 'delete_subtask':
+        title = '削除完了'
+        text = 'サブタスクを削除しました'
         label = 'ホームに戻る'
         name = 'tasks:index'
 

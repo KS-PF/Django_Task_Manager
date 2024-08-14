@@ -8,6 +8,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
+from django.http import HttpResponseForbidden
 
 
 class TeamListView(LoginRequiredMixin, TemplateView):
@@ -102,8 +103,30 @@ def team_edit(request, pk):
         else:
             form = TeamForm(instance=team)
 
-        return render(request, 'teams/edit_form.html', {'form': form})
+        delete_url = reverse('teams:delete_team', kwargs={'id':  team.team_id})
 
+        return render(request, 'teams/edit_form.html', {'form': form, 'delete_url': delete_url, })
+
+
+
+"""
+データ削除
+"""
+@login_required
+def delete_team(request, id):
+    team = get_object_or_404(TeamModels, team_id=id)
+
+    if team.creator == request.user:
+        team.delete() 
+        
+        url = reverse('teams:message', kwargs={'type': 'delete_team'})
+        return redirect(url)
+    else:
+        return HttpResponseForbidden("あなたはこのチームを削除する権限がありません。")
+"""
+データ削除
+(＊＊終わり＊＊)
+"""
 
 """
 メッセージの表示
@@ -126,6 +149,10 @@ def message(request, type):
         text = 'もう一度やり直してください'
         label = 'ホームに戻る'
         name = 'tasks:index'
+    elif type == 'delete_team':
+        title = '削除完了'
+        text = 'チームを削除しました'
+        label = '戻る'
 
     view_url = reverse(name)
     context ={

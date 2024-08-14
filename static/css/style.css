@@ -336,6 +336,7 @@ button:hover {
     border: 2px solid rgb(255, 80, 80);
     border-radius: 8px;
     width: fit-content;
+    min-width: 200px;
     /* display: block; */
     font-size: 22px;
 }

@@ -16,6 +16,9 @@ urlpatterns = [
     path('add/task/', login_required(views.AddTask.as_view()), name='add_task'),
     path('add/subtask/', login_required(views.AddSubTask.as_view()), name='add_subtask'),
 
+    path('tasks/<int:id>/delete/', login_required(views.delete_task), name='delete_task'),
+    path('subtasks/<int:id>/delete/', login_required(views.delete_subtask), name='delete_subtask'),
+
     path("use/",views.how_use, name="how_use"),
     path('message/<str:type>/', views.message, name='message'),
 ]
