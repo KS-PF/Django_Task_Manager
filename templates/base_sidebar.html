@@ -49,6 +49,15 @@
             </a>
         
             <div style="height: 15px;"></div>
+
+
+            <a href="{% url 'share:share_tasks' %}">
+                <div  class="iconbar-icons-label">
+                    <p>タスク共有</p>
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
             
     
             <a href="{% url 'tasks:add' %}">
@@ -105,6 +114,14 @@
             <a href="{% url 'tasks:whiteboard' %}">
                 <div  class="iconbar-icons-div">
                     <img src="{% static 'img/whiteboard.png' %}" alt="ホワイトボード" class="iconbar-icons">
+                </div>
+            </a>
+        
+            <div style="height: 15px;"></div>
+
+            <a href="{% url 'share:share_tasks' %}">
+                <div  class="iconbar-icons-div">
+                    <img src="{% static 'img/list.png' %}" alt="タスク共有" class="iconbar-icons">
                 </div>
             </a>
         

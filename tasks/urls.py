@@ -15,7 +15,6 @@ urlpatterns = [
     path('add/', login_required(views.add), name='add'),
     path('add/task/', login_required(views.AddTask.as_view()), name='add_task'),
     path('add/subtask/', login_required(views.AddSubTask.as_view()), name='add_subtask'),
-    
 
     path("use/",views.how_use, name="how_use"),
     path('message/<str:type>/', views.message, name='message'),

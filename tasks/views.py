@@ -342,6 +342,7 @@ class WhiteBoardView(LoginRequiredMixin, TemplateView):
 """
 
 
+
 """
 アップデート
 """
